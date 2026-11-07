@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run : npx playwright install-deps
     - name: Run Playwright tests
       run: npx playwright test --config=playwright.service.config.js --workers=2
       env:

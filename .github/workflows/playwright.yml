@@ -25,6 +25,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run : npx playwright install-deps
+    - name: test log
+      run: npm ls @playwright/test @azure/playwright @azure/identity
     - name: Run Playwright tests
       run: npx playwright test --config=playwright.service.config.js --workers=2
       env:

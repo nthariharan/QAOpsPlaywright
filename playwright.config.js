@@ -1,7 +1,11 @@
 import {defineConfig} from '@playwright/test';
 import { loadEnvFile } from 'node:process';
+import fs from 'fs';
 
-loadEnvFile();
+// Only attempt to load the file if it actually exists (local dev)
+if (fs.existsSync('.env')) {
+  loadEnvFile();
+}
 
 export default defineConfig({
   timeout : 30*1000,

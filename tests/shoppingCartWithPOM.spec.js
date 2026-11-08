@@ -8,7 +8,7 @@ for (const data of testData) {
         //PO manager Initiation
         const POManager = new poManager(page);
 
-        await POManager.login_page.login(process.env.USER_ID, process.env.PWD, data.baseURL);
+        await POManager.login_page.login(process.env.USER_ID, process.env.USER_PWD, data.baseURL);
         await page.waitForURL('**\/dashboard\/dash');
         await POManager.dashBoard.selectProduct(data.tgtProduct); //Search the product and add to cart.
         await POManager.Cart.cart_items.first().waitFor();

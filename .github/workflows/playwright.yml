@@ -33,13 +33,13 @@ jobs:
     - name: test log
       run: npm ls @playwright/test @azure/playwright @azure/identity
     - name: Run Playwright tests
-      run: npx playwright test --config=playwright.service.config.js --workers=2 --project=stable
+      run: npx playwright test --config=playwright.service.config.js --workers=2 --project=shop
       env:
         AZURE_LOG_LEVEL: verbose
         DEBUG: pw:api
         PLAYWRIGHT_SERVICE_URL: ${{ vars.PLAYWRIGHT_SERVICE_URL }}
         USER_ID: ${{ secrets.USER_ID }}
-        PWD: ${{ secrets.PWD }}
+        USER_PWD: ${{ secrets.USER_PWD }}
         AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }} 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}

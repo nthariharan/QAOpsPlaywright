@@ -57,7 +57,7 @@ test("Event Booking - 24/10/2026", async({page})=>{
     await eventCategory.selectOption(customCategory);
     await eventCity.fill("Bangalore");
     await eventVenue.fill("amphi theatre");
-    await eventDateTime.fill("2026-11-06T14:00");
+    await eventDateTime.fill("2026-12-20T14:00");
     await eventPrice.fill('0.51');
 
    

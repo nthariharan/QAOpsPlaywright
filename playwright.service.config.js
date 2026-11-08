@@ -1,9 +1,13 @@
-const { defineConfig } = require('@playwright/test');
-const { createAzurePlaywrightConfig, ServiceOS } = require('@azure/playwright');
-const { DefaultAzureCredential  } = require('@azure/identity');
-const config = require('./playwright.config.js'); //Fixed import
+// const { defineConfig } = require('@playwright/test');
+// const { createAzurePlaywrightConfig, ServiceOS } = require('@azure/playwright');
+// const { DefaultAzureCredential  } = require('@azure/identity');
 
+import {defineConfig} from '@playwright/test';
+import {createAzurePlaywrightConfig, ServiceOS } from '@azure/playwright';
+import { DefaultAzureCredential  }  from '@azure/identity';
+import config from './playwright.config.js'; 
 
+console.log(config);
 /* Learn more about service configuration at https://aka.ms/pww/docs/config */
 export default defineConfig(
   config,
@@ -22,10 +26,10 @@ export default defineConfig(
     This configuration will replace any existing reporter settings from your base config.
     If you're already using other reporters, add them to this array.
     */
-    reporter: [
-      ["html", { open: "never" }],
-      ["@azure/playwright/reporter"],
-    ],
+    // reporter: [
+    //   ["html", { open: "never" }],
+    //   ["@azure/playwright/reporter"],
+    // ],
     
   }
   

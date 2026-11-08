@@ -12,12 +12,20 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
+    - name: Verify env vars
+      run: |
+        echo "PLAYWRIGHT_SERVICE_URL exists: ${PLAYWRIGHT_SERVICE_URL:+YES}"
     - uses: actions/checkout@v4
     - uses: azure/login@v3
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: Show Azure account
+      run: az account show
+    - name: Show current principal
+      run: az ad signed-in-user show
+      
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
@@ -30,6 +38,8 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test --config=playwright.service.config.js --workers=2
       env:
+        AZURE_LOG_LEVEL: verbose
+        DEBUG: pw:api
         PLAYWRIGHT_SERVICE_URL: ${{ vars.PLAYWRIGHT_SERVICE_URL }}
         USER_ID: ${{ secrets.USER_ID }}
         PWD: ${{ secrets.PWD }}

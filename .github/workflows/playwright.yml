@@ -22,10 +22,7 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     - name: Show Azure account
-      run: az account show
-    - name: Show current principal
-      run: az ad signed-in-user show
-      
+      run: az account show      
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
